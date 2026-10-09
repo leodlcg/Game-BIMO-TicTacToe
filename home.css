@@ -1,0 +1,316 @@
+#home-content-game{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+
+}
+
+#arm-left{
+
+    margin-bottom: 150px;
+    margin-right: -1px;
+    animation: move-arm-down 0.3s linear;
+    animation-fill-mode: forwards;
+
+}
+
+#arm-right{
+
+    transform: scaleY(-1);
+    margin-left: -5px;
+    animation: move-arm-down 0.3s linear;
+    animation-fill-mode: forwards;
+    
+}
+
+@keyframes move-arm-down{
+
+    0%   { transform: scaleY(1); margin-bottom: 150px;}
+    10%   { margin-bottom: 135px;}
+    20%   { margin-bottom: 120px;}
+    30%   { margin-bottom: 105px;}
+    40%   { margin-bottom: 90px;}
+    50%   { margin-bottom: 75px;}
+    60%   { margin-bottom: 60px;}
+    70%   { margin-bottom: 45px;}
+    80%   { margin-bottom: 30px;}
+    90%   { margin-bottom: 15px;}
+    100%   { transform: scaleY(-1); margin-bottom: 0px;}
+
+}
+
+@keyframes move-arm-up{
+
+    0%   { transform: scaleY(-1); margin-bottom: 0px;}
+    10%   { margin-bottom: 15px;}
+    20%   { margin-bottom: 30px;}
+    30%   { margin-bottom: 45px;}
+    40%   { margin-bottom: 60px;}
+    50%   { margin-bottom: 75px;}
+    60%   { margin-bottom: 90px;}
+    70%   { margin-bottom: 105px;}
+    80%   { margin-bottom: 120px;}
+    90%   { margin-bottom: 135px;}
+    100%   { transform: scaleY(1); margin-bottom: 150px;}
+
+}
+
+#home-start-game{
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url("./img/BIMO-HOME.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+#home-title{
+
+    position: absolute;
+    font-family: AdventureTime;
+    color: #1f493b;
+    font-size: 7rem;
+    top: 1rem;
+    margin-top: 30px;
+
+}
+
+#home-title:hover {
+
+    animation: vibrar 0.3s linear infinite;
+
+}
+
+@keyframes vibrar {
+
+    0%   { transform: translate(0, 0); }
+    20%  { transform: translate(-2px, 2px); }
+    40%  { transform: translate(-2px, -2px); }
+    60%  { transform: translate(2px, 2px); }
+    80%  { transform: translate(2px, -2px); }
+    100% { transform: translate(0, 0); }
+
+}
+
+.btn-home-game{
+
+    width: auto;
+    height: auto;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    background: none;
+    text-decoration: none;
+
+}
+
+.btn-home-game:hover{
+
+    transform: scale(1.05);
+
+}
+
+#cursor{
+
+    position: absolute;
+    width: 100px;
+    height: auto;
+    transform: rotate(30deg);
+    margin-top: 210px;
+    margin-right: 300px;
+    animation: cursor 1s ease-in-out infinite;
+
+}
+
+@keyframes cursor{
+
+    0%   { transform: translateY(0) rotate(30deg); }
+    50%  { transform: translateY(-6px) rotate(30deg); }
+    100% { transform: translateY(0) rotate(30deg); }
+
+}
+
+#btn_start{
+    
+    position: absolute;
+    width: 230px;
+    margin-top: 53px;
+    margin-right: 170px;
+    border: none;
+    font-weight: bold;
+    font-size: 25px;
+    
+}
+
+@keyframes trocar-cores {
+    0%   { color: #ff4d4d; }
+    25%  { color: #ffd24d; }
+    50%  { color: #4dff88; }
+    75%  { color: #4da6ff; }
+    100% { color: #ff4d4d; }
+}
+
+#btn_start {
+    animation: trocar-cores 3s linear infinite;
+}
+
+#link_HowToPlay{
+
+    position: absolute;
+    width: 80px;
+    bottom: 9.5rem;
+    left: 23.2rem;
+    border: none;
+    text-align: center;
+    font-weight: bold
+}
+
+#link_GitHub{
+
+    position: absolute;
+    width: 80px;
+    bottom: 22.2rem;
+    left: 26.8rem;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    color: greenyellow;
+
+    
+}
+
+#dialog-start{
+
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 50%;
+    max-width: 420px;
+    height: 70%;
+    padding: 2rem;
+    border: 4px solid #000;
+    border-radius: 16px;
+    background: #fdf6e3;
+    color: #222;
+    box-shadow: 8px 8px 0 #000;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+#dialog-start[open]{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+#dialog-start::backdrop{
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+#form-title{
+    font-family: AdventureTime, 'Courier New', monospace;
+    color: cornflowerblue;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 0 #000;
+}
+
+#form-create-players{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+#form-create-players label{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-top: 0.6rem;
+}
+
+#form-create-players input[type="text"]{
+    padding: 0.6rem 0.8rem;
+    border: 3px solid #000;
+    border-radius: 8px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+}
+
+#form-create-players input[type="text"]:focus{
+    box-shadow: 4px 4px 0 cornflowerblue;
+    transform: translate(-2px, -2px);
+}
+
+#form-create-players input[type="text"]:disabled{
+    background: #ddd;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#form-create-players label[for="checkbox-bot"]{
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+#checkbox-bot{
+    width: 20px;
+    height: 20px;
+    accent-color: cornflowerblue;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+#form-bth-play,
+#form-bth-back{
+    padding: 0.7rem 1.5rem;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #000;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#form-bth-play{
+    margin-top: 1rem;
+    width: 100%;
+    background: #4dff88;
+}
+
+#form-bth-back{
+    width: 80%;
+    background: #ff4d4d;
+    color: #fff;
+}
+
+#form-bth-play:hover,
+#form-bth-back:hover{
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000;
+}
+
+#form-bth-play:active,
+#form-bth-back:active{
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 #000;
+}
