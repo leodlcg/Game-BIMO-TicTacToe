@@ -3,8 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 100%;
     height: 100%;
+    overflow: auto;  
 
 }
 
@@ -44,7 +45,7 @@
 
 @keyframes move-arm-up{
 
-    0%   { transform: scaleY(-1); margin-bottom: 0px;}
+    0%    { transform: scaleY(-1); margin-bottom: 0px;}
     10%   { margin-bottom: 15px;}
     20%   { margin-bottom: 30px;}
     30%   { margin-bottom: 45px;}
@@ -54,18 +55,16 @@
     70%   { margin-bottom: 105px;}
     80%   { margin-bottom: 120px;}
     90%   { margin-bottom: 135px;}
-    100%   { transform: scaleY(1); margin-bottom: 150px;}
+    100%  { transform: scaleY(1); margin-bottom: 150px;}
 
 }
 
 #home-start-game{
 
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    flex: none;
+    width: 600px;
+    height: 750px;
     background-image: url("./img/BIMO-HOME.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -75,11 +74,10 @@
 
 #home-title{
 
-    position: absolute;
+    text-align: center;
     font-family: AdventureTime;
     color: #1f493b;
     font-size: 7rem;
-    top: 1rem;
     margin-top: 30px;
 
 }
@@ -125,8 +123,8 @@
     width: 100px;
     height: auto;
     transform: rotate(30deg);
-    margin-top: 210px;
-    margin-right: 300px;
+    margin-top: 270px;
+    margin-left: 50px;
     animation: cursor 1s ease-in-out infinite;
 
 }
@@ -143,8 +141,8 @@
     
     position: absolute;
     width: 230px;
-    margin-top: 53px;
-    margin-right: 170px;
+    margin-top: 227px;
+    margin-left: 100px;
     border: none;
     font-weight: bold;
     font-size: 25px;
@@ -167,8 +165,8 @@
 
     position: absolute;
     width: 80px;
-    bottom: 9.5rem;
-    left: 23.2rem;
+    margin-top: 415px;
+    margin-left: 372px;
     border: none;
     text-align: center;
     font-weight: bold
@@ -178,8 +176,8 @@
 
     position: absolute;
     width: 80px;
-    bottom: 22.2rem;
-    left: 26.8rem;
+    margin-top: 235px;
+    margin-left: 431px;
     border: none;
     text-align: center;
     font-weight: bold;
