@@ -2,7 +2,13 @@
 
 Jogo da velha desenvolvido com HTML, CSS e JavaScript puro, com animações durante todo partida.
 
-Este projeto foi criado para praticar JavaScript, HTML e CSS, usando fábricas (factory functions) e uma separação entre view e backend, em que a view cuida da interface e o backend da lógica do jogo.
+Este projeto foi criado para praticar JavaScript, HTML e CSS, usando fábricas
+(factory functions) e uma separação entre view e backend, em que a view cuida
+da interface e o backend da lógica do jogo.
+
+O intuito não é ter um site responsivo nem um produto finalizado. Por isso, o
+layout usa tamanhos fixos e pode não se adaptar bem a diferentes telas e
+dispositivos. O foco é o aprendizado e a organização do código.
 
 📸 Preview:
 
