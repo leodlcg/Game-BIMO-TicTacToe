@@ -1,4 +1,4 @@
-import {startGame, playRound, createPlayer, getPlayer01Name, getPlayer02Name, getPlayer01Win, getPlayer02Win, getPlayersRound, getEndRound, resetRound, finishGame} from "./gameBoard.js"
+import {startGame, playRound, createPlayer, getPlayer01Name, getPlayer02Name, getPlayer01Win, getPlayer02Win, getPlayersRound, getStateGame, resetRound, finishGame, getArrayPositions} from "./gameBoard.js"
 
 document.getElementById("btn_start").addEventListener("click", () => {
 
@@ -33,7 +33,7 @@ document.querySelectorAll(".btn-positon-game").forEach((btn, index) => {
         btn.textContent = getPlayersRound() === 1 ? "X" : "O";
         btn.disabled = true;
         playRound(index + 1);
-        clearGameBoard();
+        checkGameBoard();
 
         if(getPlayersRound() === 1){
             document.getElementById("arm-left-game").style.animation = "move-arm-up 0.3s linear forwards";
@@ -52,13 +52,74 @@ document.querySelectorAll(".btn-positon-game").forEach((btn, index) => {
     });
 });
 
-export function clearGameBoard(){
+async function checkGameBoard(){
 
-    if(getEndRound()){
+    if(getStateGame() === "victory"){
+
+        highlightPositions()
+        await timeView(2000);
+        clearGameBoard();
+        console.log("vitoria")
+        return
+
+    }
+
+    if(getStateGame() === "draw"){
+
+        highlightPositions()
+        await timeView(2000);
+        clearGameBoard();
+        console.log("empate")
+        return
+
+    }
+
+    if(getStateGame() === "playing"){
+
+        return
+
+    }
+
+}
+
+function highlightPositions(){
+
+    const positions = getArrayPositions();
+
+    if(getStateGame() === "victory"){
+
+        for(let i = 0; i < positions.length; i++){
+
+            document.getElementsByClassName("btn-positon-game")[positions[i] - 1].style.backgroundColor = "green";
+
+        }
+
+    }
+
+    if(getStateGame() === "draw"){
+
+        for(let i = 0; i < document.getElementsByClassName("btn-positon-game").length; i++){
+
+            document.getElementsByClassName("btn-positon-game")[i].style.backgroundColor = "darkslategrey";
+
+        }
+        
+    }
+
+}
+
+function timeView(ms) {
+
+  return new Promise((resolve) => setTimeout(resolve, ms));
+
+}
+
+function clearGameBoard(){
 
         document.querySelectorAll(".btn-positon-game").forEach(btn => {
             btn.textContent = "";
             btn.disabled = false;
+            btn.style.backgroundColor = "#1f493b";
         });
         
         resetRound();
@@ -66,17 +127,10 @@ export function clearGameBoard(){
         document.getElementById("win-player02").textContent = `Win: ${getPlayer02Win()}`;
         return
 
-    }
-
-    return
 }
 
 document.getElementById("btn-reset-game").addEventListener("click", () => {
 
-    document.querySelectorAll(".btn-positon-game").forEach(btn => {
-        btn.textContent = "";
-        btn.disabled = false;
-    });
     clearGameBoard();
     
 })

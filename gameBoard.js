@@ -12,7 +12,9 @@ let playersRound = 0; //1 = player1 && 2 = player2
 
 let totalRounds = 0;
 
-let endRound = false;
+let stateGame = "playing" //draw, victory or playing
+
+let arrayPositions = [];
 
 export function createPlayer(name){
 
@@ -126,19 +128,22 @@ function checkWinRound(){
 function checkWinRow(){
 
     let check = [];
+    let coords = [];
     let win = false;
 
     for(let i = 0; i <= 2; i++){
 
         for(let j = 0; j <= 2; j++){
-        
+
             check[j] = gameBoard[i][j];
+            coords[j] = [i, j];
 
         }
 
         if(checkWin(check)){
 
             win = true;
+            arrayPositions = getPositions(coords);
             break;
 
         }
@@ -152,19 +157,22 @@ function checkWinRow(){
 function checkWinColumn(){
 
     let check = [];
+    let coords = [];
     let win = false;
 
     for(let i = 0; i <= 2; i++){
 
         for(let j = 0; j <= 2; j++){
-        
+
             check[j] = gameBoard[j][i];
+            coords[j] = [j, i];
 
         }
 
         if(checkWin(check)){
 
             win = true;
+            arrayPositions = getPositions(coords);
             break;
 
         }
@@ -185,7 +193,7 @@ function checkWinDiagonal(){
     if(checkWin(check)){
 
         win = true;
-
+        arrayPositions = getPositions([[0, 0], [1, 1], [2, 2]]);
         return win;
 
     }
@@ -195,7 +203,7 @@ function checkWinDiagonal(){
     if(checkWin(check)){
 
         win = true;
-
+        arrayPositions = getPositions([[2, 0], [1, 1], [0, 2]]);
         return win;
 
     }
@@ -227,7 +235,7 @@ export function startGame(){
 
 export function resetRound(){
 
-    endRound = false;
+    stateGame = "playing" //draw, victory or playing
     totalRounds++;
     playersRound = 1;
     console.log("ResetRound")
@@ -239,13 +247,16 @@ function finishRound(type){
     if(type === "Win"){
 
         players[playersRound - 1].addWin();
+        stateGame = "victory" //draw, victory or playing
+        resetGameBoard();
+        return;
+
 
     }
 
-    endRound = true;
+    stateGame = "draw" //draw, victory or playing
     resetGameBoard();
-    console.log("Tesotu aqui")
-
+    return;
 
 }
 
@@ -265,8 +276,21 @@ export function finishGame(){
     resetGameBoard();
     totalRounds = 0;
     playersRound = 0;
-    endRound = false;
+    stateGame = "playing" //draw, victory or playing
 
+}
+
+function getPositions(check) {
+  const positions = [];
+
+  for (let i = 0; i < check.length; i++) {
+    const linha = check[i][0];
+    const coluna = check[i][1];
+
+    positions.push(linha * 3 + coluna + 1);
+  }
+
+  return positions;
 }
 
 export function getPlayer01Name(){return players[0].getName();}
@@ -279,4 +303,6 @@ export function getPlayer02Win(){return players[1].getWin();}
 
 export function getPlayersRound(){return playersRound;}
 
-export function getEndRound(){return endRound;}
+export function getStateGame(){return stateGame;} //draw, victory or playing
+
+export function getArrayPositions(){return arrayPositions;}
